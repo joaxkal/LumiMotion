@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LumiMotion: Improving Gaussian Relighting with Scene Dynamics</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    />
+    <link rel="stylesheet" href="webpage/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>LumiMotion: Improving Gaussian Relighting<br />with Scene Dynamics</h1>
+        <div class="badges">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://img.shields.io/badge/arXiv-Paper-b31b1b.svg"
+              alt="arXiv Paper"
+            />
+          </a>
+          <a
+            href="https://github.com/joaxkal/LumiMotion"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://img.shields.io/badge/Code-GitHub-181717.svg?logo=github"
+              alt="Code on GitHub"
+            />
+          </a>
+          <a
+            href="https://zenodo.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://img.shields.io/badge/Zenodo-Data-blue.svg?logo=zenodo"
+              alt="Zenodo Data"
+            />
+          </a>
+        </div>
+        <p class="accepted-note">Accepted to CVPR 2026</p>
+        <div class="authors">
+          <div class="authors-row">
+            <div class="author">
+              <div class="author-name">Joanna Kaleta*</div>
+              <div class="author-affiliation">
+                Warsaw University of Technology,<br />
+                Sano Centre for Computational Medicine
+              </div>
+            </div>
+            <div class="author">
+              <div class="author-name">Piotr Wójcik*</div>
+              <div class="author-affiliation">
+                Center for Molecular Medicine Cologne,<br />
+                University of Cologne
+              </div>
+            </div>
+            <div class="author">
+              <div class="author-name">Kacper Marzol</div>
+              <div class="author-affiliation">Jagiellonian University</div>
+            </div>
+          </div>
+          <div class="authors-row">
+            <div class="author">
+              <div class="author-name">Tomasz Trzciński</div>
+              <div class="author-affiliation">Warsaw University of Technology</div>
+            </div>
+            <div class="author">
+              <div class="author-name">Kacper Kania</div>
+              <div class="author-affiliation">Warsaw University of Technology</div>
+            </div>
+            <div class="author">
+              <div class="author-name">Marek Kowalski</div>
+              <div class="author-affiliation">Microsoft</div>
+            </div>
+          </div>
+        </div>
+        <p class="equal-note">* equal contribution</p>
+      </header>
+
+      <section>
+        <h2>Abstract</h2>
+        <p class="abstract-text">
+          In 3D reconstruction, the problem of inverse rendering, namely
+          recovering the illumination of the scene and the material properties,
+          is fundamental. Existing Gaussian Splatting-based methods primarily
+          target static scenes and often assume simplified or moderate lighting
+          to avoid entangling shadows with surface appearance. This limits their
+          ability to accurately separate lighting effects from material
+          properties, particularly in real-world conditions. We address this
+          limitation by leveraging dynamic elements, regions of the scene that
+          undergo motion, as a supervisory signal for inverse rendering. Motion
+          reveals the same surfaces under varying lighting conditions, providing
+          stronger cues for disentangling material and illumination. This thesis
+          is supported by our experimental results which show we improve LPIPS
+          by 23% for albedo estimation and by 15% for scene relighting relative
+          to next-best baseline. To this end, we introduce LumiMotion, the
+          first Gaussian-based approach that leverages dynamics for inverse
+          rendering and operates in arbitrary dynamic scenes. Our method learns
+          a dynamic 2D Gaussian Splatting representation that employs a set of
+          novel constraints which encourage the dynamic regions of the scene to
+          deform, while keeping static regions stable. As we demonstrate, this
+          separation is crucial for correct optimization of the albedo. Finally,
+          we release a new synthetic benchmark comprising five scenes under four
+          lighting conditions, each in both static and dynamic variants, for
+          the first time enabling systematic evaluation of inverse rendering
+          methods in dynamic environments and challenging lighting.
+        </p>
+      </section>
+
+      <section>
+        <h2>Method</h2>
+        <img
+          class="content-image"
+          src="webpage/fig1.png"
+          alt="LumiMotion method overview"
+        />
+      </section>
+
+      <section>
+        <h2>Results on real scenes from ENeRF dataset</h2>
+      </section>
+
+      <section>
+        <video class="content-video" controls loop autoplay muted playsinline preload="metadata">
+          <source src="webpage/ENERF_scene1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
+
+      <section>
+        <video class="content-video regular-media" controls loop autoplay muted playsinline preload="metadata">
+          <source src="webpage/ENERF_scene2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
+
+      <section>
+        <h2>Results on real scenes from DNA dataset</h2>
+        <p class="zoom-note">Click on the videos to zoom them.</p>
+        <div class="dna-grid regular-media">
+          <div class="dna-item">
+            <video class="content-video dna-video" controls loop autoplay muted playsinline preload="metadata">
+              <source src="webpage/DNA_Actor_cleaning_table.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="dna-item">
+            <video class="content-video dna-video" controls loop autoplay muted playsinline preload="metadata">
+              <source src="webpage/DNA_Actor_sitting_on_stool.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="dna-item">
+            <video class="content-video dna-video" controls loop autoplay muted playsinline preload="metadata">
+              <source src="webpage/DNA_Actor_with_hairdryer.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section class="synthetic-scenes-section">
+        <h2>Results on our synthetic scenes</h2>
+        <img
+          class="content-image"
+          src="webpage/fig2.png"
+          alt="LumiMotion results"
+        />
+        <video class="content-video" controls loop autoplay muted playsinline preload="metadata">
+          <source src="webpage/synthetic_scenes_in_novel_lights.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
+
+      <section>
+        <h2>GT Renders of our proposed synthetic dataset - variety of light conditions</h2>
+        <img
+          class="content-image"
+          src="webpage/fig3.jpg"
+          alt="GT renders in novel light conditions"
+        />
+      </section>
+
+      <section>
+        <h2>Acknowledgments</h2>
+        <p>
+          We acknowledge the following useful resources and repositories we
+          built upon while developing LumiMotion:
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/hustvl/Dynamic-2DGS"
+              target="_blank"
+              rel="noopener noreferrer"
+              >https://github.com/hustvl/Dynamic-2DGS</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/fudan-zvg/IRGS"
+              target="_blank"
+              rel="noopener noreferrer"
+              >https://github.com/fudan-zvg/IRGS</a
+            >
+            (including surfel tracer)
+          </li>
+          <li>
+            <a
+              href="https://github.com/NJU-3DV/Relightable3DGaussian"
+              target="_blank"
+              rel="noopener noreferrer"
+              >https://github.com/NJU-3DV/Relightable3DGaussian</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Citation</h2>
+        <p>If you find this work useful, please cite:</p>
+        <pre class="citation-box"><code>@inproceedings{kaleta2026lumimotion,
+  title     = {LumiMotion: Improving Gaussian Relighting with Scene Dynamics},
+  author    = {Kaleta, Joanna and Wojcik, Piotr and Marzol, Kacper and Trzcinski, Tomasz and Kania, Kacper and Kowalski, Marek},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2026}
+}</code></pre>
+        <p>
+          Please consider citing acknowledged works as we build upon their
+          repositories.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
