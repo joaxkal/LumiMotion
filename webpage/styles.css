@@ -138,6 +138,16 @@ section > ul,
   text-align: justify;
 }
 
+.abstract-section .content-image:first-child {
+  margin-bottom: 0;
+}
+
+.abstract-section h2 {
+  padding-top: 40px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
 .synthetic-caption {
   margin: 12px 0;
   text-align: center;
