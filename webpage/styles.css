@@ -60,7 +60,7 @@ h1 {
 .equal-note {
   font-size: 0.9rem;
   color: #444;
-  margin: 2px 0 10px;
+  margin: 15px 0 10px;
 }
 
 @media (max-width: 850px) {
