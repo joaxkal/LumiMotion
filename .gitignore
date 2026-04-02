@@ -1,0 +1,35 @@
+*.pyc
+.vscode
+output*
+build*
+data
+*.ply
+**/PKG-INFO
+# submodules
+**__pycache__**
+*.out
+eval
+*.npz
+**/tmp
+*vis_test*
+*.mp4
+!webpage/**/*.mp4
+mock*
+all_values_512dirs.pt
+onecam
+RAFT
+saved_videos
+co-tracker
+results_dump
+assets/body_models*
+
+# Native extension build artifacts
+submodules/simple-knn/build/
+submodules/simple-knn/simple_knn.egg-info/
+submodules/surfel_tracer/build/
+submodules/surfel_tracer/*.egg-info/
+
+# Generic local package/build outputs
+**/*.egg-info/
+**/dist/
+**/.pytest_cache/
